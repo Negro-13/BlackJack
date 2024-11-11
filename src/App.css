@@ -17,3 +17,8 @@ body, html {
   padding: 20px; 
 }
 
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Espaciado entre botones */
+}

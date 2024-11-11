@@ -1,0 +1,19 @@
+body, html {
+  background-image: url("./assets/6484-verde.jpg");
+  background-repeat: no-repeat;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mesa {
+  font-family: Orbitron;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; 
+}
+

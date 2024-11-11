@@ -3,27 +3,28 @@ import axios from "axios";
 import { useState } from "react";
 
 function App() {
+	/*Img primera carta player*/ 
 	const [carta1, setCarta1] = useState("");
 	const [carta2, setCarta2] = useState("");
-
-	const [deck, setDeck] = useState("");
-
+	/*valores primeras cartas player*/
 	const [c1Value, setC1Value] = useState(0);
 	const [c2Value, setC2Value] = useState(0);
-
+	/*nuevas cartas player */
 	const [newCard, setNewCard] = useState("");
 	const [newCardVal, setNewCardVal] = useState(0);
-
+    /*ns q es */
+	const [deck, setDeck] = useState("");
+    /*imagens primeras cartas cupier */
 	const [crupier1, setCrupier1] = useState("");
 	const [crupier2, setCrupier2] = useState("");
-
+	/* Image dada vuelta carta crupier  */
 	const [img , setImg] = useState("")
-
+	/*valores primeras cartas cupier */
 	const [valCrupier1, setValCruier1] = useState(0);
 	const [valCrupier2, setValCruier2] = useState(0);
-
+	/*nuevas cartas cupier */
 	const [newCardCup, setNewCardCup] = useState("");
-	const [newValCup, setValCardCup] = useState(0);
+	const [newValCup, setNewValCup] = useState(0);
 
 
 	const NewGame = () => {
@@ -40,8 +41,8 @@ function App() {
 			.then((res) => {
 				setCarta1(res.data.cards[0].image);
 				setCarta2(res.data.cards[1].image);
-				setC1Value(parseInt(res.data[0].value));
-				setC2Value(parseInt(res.data[1].value));
+				setC1Value(parseInt(res.data.cards[0].value));
+				setC2Value(parseInt(res.data.cards[1].value));
 			});
 	};
 
@@ -53,7 +54,8 @@ function App() {
 				setCrupier1('https://deckofcardsapi.com/static/img/back.png');
 				setCrupier2(res.data.cards[1].image);
 				setC1Value(parseInt(res.data[0].value));
-				setC2Value(parseInt(res.data[1].value));
+				console.log(res.data.cards[0].value)
+				setC2Value(parseInt(res.data.cards[1].value));
 			});
 	};
 
@@ -62,18 +64,20 @@ function App() {
 			.get(`https://deckofcardsapi.com/api/deck/${deck}/draw/?count=1`)
 			.then((res) => {
 				setNewCard(res.data.cards[0].image);
-				setNewCardVal(parseInt(res.data[0].value));
+				setNewCardVal(parseInt(res.data.cards[0].value));
 			});
 	};
 
 	const iStay = () => {
 		setCrupier1(img)
-		totalVal = valCrupier1 + valCrupier2
-		if( totalVal < 16){
+		let totalVal = valCrupier1 + valCrupier2
+		console.log(totalVal)
+		while( totalVal < 16){
 			axios.get(`https://deckofcardsapi.com/api/deck/${deck}/draw/?count=1`)
 			.then((res) => {
 				setNewCardCup(res.data.cards[0].image);
-				setNewValCup(parseInt(res.data[0].value));
+				setNewValCup(parseInt(res.data.cards[0].value));
+				totalVal += setNewValCup
 			});
 		}
 

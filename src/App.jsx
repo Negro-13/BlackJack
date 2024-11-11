@@ -41,8 +41,8 @@ function App() {
 			.then((res) => {
 				setCarta1(res.data.cards[0].image);
 				setCarta2(res.data.cards[1].image);
-				setC1Value(parseInt(res.data.cards[0].value));
-				setC2Value(parseInt(res.data.cards[1].value));
+				setValCruier1(parseInt(res.data.cards[0].value));
+				setValCruier2(parseInt(res.data.cards[1].value));
 			});
 	};
 
@@ -77,7 +77,7 @@ function App() {
 			.then((res) => {
 				setNewCardCup(res.data.cards[0].image);
 				setNewValCup(parseInt(res.data.cards[0].value));
-				totalVal += setNewValCup
+				totalVal += newValCup
 			});
 		}
 
